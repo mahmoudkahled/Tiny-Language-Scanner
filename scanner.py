@@ -1,6 +1,7 @@
+import sys
 class Scanner:
     def __init__(self):
-        print('Object Initialized...')
+        pass
     TokenType_var = ['IDENTIFIER','NUMBER']
     TokenDict = {'SEMICOLON':';','IF':'if','THEN':'then','REPEAT':'repeat','UNTIL':'until',
     'ASSIGN':':=','READ':'read','WRITE':'write','LESSTHAN':'<','EQUAL':'=','PLUS':'+',
@@ -109,7 +110,8 @@ class Scanner:
         for token , type in zip(token_list, token_type):
             file.write(token + ' - ' + type + '\n')
 def main():
-    file = open('example.txt','r')
+    input = sys.argv[1]
+    file = open(input,'r')
     x = Scanner()
     file_string = x.convert_file_to_string(file)
     tokens = x.process_input(file_string)
