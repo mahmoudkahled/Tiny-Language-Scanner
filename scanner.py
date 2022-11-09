@@ -3,7 +3,7 @@ class Scanner:
     def __init__(self):
         pass
     TokenType_var = ['IDENTIFIER','NUMBER']
-    TokenDict = {'SEMICOLON':';','IF':'if','THEN':'then','REPEAT':'repeat','UNTIL':'until',
+    TokenDict = {'SEMICOLON':';','IF':'if','THEN':'then','END':'end','REPEAT':'repeat','UNTIL':'until',
     'ASSIGN':':=','READ':'read','WRITE':'write','LESSTHAN':'<','EQUAL':'=','PLUS':'+',
     'MINUS':'-','MULT':'*','DIV':'/','OPENBRACKET':'(','CLOSEDBRACKET':')'}
     def convert_file_to_string(self,file):
