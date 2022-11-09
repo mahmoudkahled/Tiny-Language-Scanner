@@ -86,15 +86,34 @@ class Scanner:
                     token_list.append(token_str)
                     token_str = ""
                     state = 'START'
+        if token_str != "":
+            token_list.append(token_str)
+            token_str = ''
         return token_list
     def process_output(self,token_list):
-        
-        pass
-file = open('example.txt','r')
-x = Scanner()
-file_string = x.convert_file_to_string(file)
-tokens = x.process_input(file_string)
-output_tokens = x.process_output(tokens)
-print(tokens)
-
-
+        token_type = []
+        keys = list(self.TokenDict.keys())
+        values = list(self.TokenDict.values())
+        for token in token_list:
+            if token in values:
+                token_type.append(keys[values.index(token)])
+            elif token.startswith('{'):
+                token_type.append('COMMENT')
+            elif token.isdigit():
+                token_type.append(self.TokenType_var[1])
+            elif token.isalpha():
+                token_type.append(self.TokenType_var[0])
+        return token_type
+    def output_file(self,token_list,token_type):
+        file = open('output_file.txt','x')
+        for token , type in zip(token_list, token_type):
+            file.write(token + ' - ' + type + '\n')
+def main():
+    file = open('example.txt','r')
+    x = Scanner()
+    file_string = x.convert_file_to_string(file)
+    tokens = x.process_input(file_string)
+    output_tokens = x.process_output(tokens)
+    x.output_file(tokens,output_tokens)
+if __name__ == '__main__':
+    main()
