@@ -1,4 +1,3 @@
-import sys
 class Scanner:
     def __init__(self):
         self.TokenType_var = ['IDENTIFIER','NUMBER']
@@ -108,8 +107,8 @@ class Scanner:
         file = open('output_file.txt','x')
         for token , type in zip(token_list, token_type):
             file.write(token + ' - ' + type + '\n')
-def main():
-    input = sys.argv[1]
+def main(input):
+    input = input + ".txt"
     file = open(input,'r')
     x = Scanner()
     file_string = x.convert_file_to_string(file)
@@ -117,4 +116,5 @@ def main():
     output_tokens = x.process_output(tokens)
     x.output_file(tokens,output_tokens)
 if __name__ == '__main__':
-    main()
+    file_name = input('please enter the file name')
+    main(file_name)
