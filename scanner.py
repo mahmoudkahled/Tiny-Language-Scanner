@@ -116,5 +116,5 @@ def main(input):
     output_tokens = x.process_output(tokens)
     x.output_file(tokens,output_tokens)
 if __name__ == '__main__':
-    file_name = input('please enter the file name')
+    file_name = input('please enter the file name:\n')
     main(file_name)
